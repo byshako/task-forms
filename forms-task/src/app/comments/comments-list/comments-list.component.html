@@ -1,12 +1,16 @@
-<ul class="flevel" *ngFor="let item of allComments">
-  <li class="flevel__item">
-    <strong>{{item.name}}</strong><br/>{{item.comment}}
-    <!--<div class="comm-reply"><button type="button" class="btn btn-danger">პასუხი</button></div>-->
-    <ul class="slevel" *ngIf="item.reply">
-      <li class="slevel__item" *ngFor="let reply of item.reply">
-        <strong>{{reply.name}}</strong><br/>{{ reply.comment }}
-        <!--<div class="comm-reply"><button type="button" class="btn btn-danger">პასუხი</button></div>-->
-      </li>
-    </ul>
-  </li>
+<ul class="flevel" *ngFor="let item of commentsService.commentsData">
+    <li class="flevel__item">
+        <strong>{{item.name}}</strong><br/>{{item.comment}}
+        <div class="comm-reply">
+            <!--<button type="button" class="btn btn-danger" (click)="commentsService.reply(item)">პასუხი</button>-->
+        </div>
+        <ul class="slevel" *ngIf="item.reply">
+            <li class="slevel__item" *ngFor="let reply of item.reply">
+                <strong>{{reply.name}}</strong><br/>{{ reply.comment }}
+                <div class="comm-reply">
+                    <!--<button type="button" class="btn btn-danger" (click)="commentsService.reply(item)">პასუხი</button>-->
+                </div>
+            </li>
+        </ul>
+    </li>
 </ul>

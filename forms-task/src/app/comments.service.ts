@@ -1,32 +1,37 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable()
 export class CommentsService {
-  name: string;
-  comment: string;
-  reply: any[];
-  constructor() { }
+    private item: any = null;
 
-  commentsData = [
-    { name : 'სახელი' , comment : 'კომენტარი' , reply : [{ name : 'სახელი 2' , comment : 'კომენტარი 2' }] },
-    { name : 'სახელი' , comment : 'კომენტარი' , reply : [] },
-    {
-      name : 'სახელი',
-      comment : 'კომენტარი',
-      reply : [
-          { name : 'სახელი 2' , comment : 'კომენტარი 2' },
-          { name : 'სახელი 3' , comment : 'კომენტარი 3' }
-          ]
+    commentsData = [
+        {name: 'სახელი', comment: 'კომენტარი', reply: [{name: 'სახელი 2', comment: 'კომენტარი 2'}]},
+        {name: 'სახელი', comment: 'კომენტარი', reply: []},
+        {
+            name: 'სახელი',
+            comment: 'კომენტარი',
+            reply: [
+                {name: 'სახელი 2', comment: 'კომენტარი 2'},
+                {name: 'სახელი 3', comment: 'კომენტარი 3'}
+            ]
+        }
+    ];
+
+    constructor() {
     }
-  ];
-  addComment(comment) {
-    this.commentsData.push(
-        comment
-    );
-  }
-  replyComment(comment) {
-    this.commentsData.push(
-        comment
-    );
-  }
+
+    public reply(item: any) {
+        this.item = item;
+    }
+
+    addComment(comment) {
+        if (this.item) {
+            this.item.reply.push(comment);
+            this.item = null;
+        } else {
+            this.commentsData.push(
+                comment
+            );
+        }
+    }
 }
