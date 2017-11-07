@@ -1,3 +1,10 @@
-<p>
-  comments-list works!
-</p>
+<ul class="flevel" *ngFor="let item of allComments">
+  <li class="flevel__item">
+    <strong>{{item.name}}</strong><br/>{{item.comment}}
+    <ul class="slevel" *ngIf="item.reply">
+      <li class="slevel__item" *ngFor="let reply of item.reply">
+        <strong>{{reply.name}}</strong><br/>{{ reply.comment }}
+      </li>
+    </ul>
+  </li>
+</ul>

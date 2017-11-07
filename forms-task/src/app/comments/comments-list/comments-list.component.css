@@ -1,0 +1,22 @@
+.flevel, .slevel{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.flevel{
+
+}
+.flevel__item{
+    border: 1px solid #eeeeee;
+    margin: 3px;
+    padding: 15px;
+}
+.slevel{
+    margin-top: 10px;
+}
+.slevel__item{
+    padding: 10px;
+    margin-bottom: 5px;
+    padding-left: 25px;
+    border: 1px solid #eeeeee;
+}
